@@ -1,0 +1,40 @@
+services:
+
+  grafana:
+    image: grafana/grafana-enterprise
+    container_name: grafana
+    restart: unless-stopped
+    ports:
+      - '3000:3000'
+    environment:
+      - GF_SECURITY_ADMIN_USER=admin
+      - GF_SECURITY_ADMIN_PASSWORD=admin_pass
+    volumes:
+      - grafana-storage:/var/lib/grafana
+
+  prometheus:
+    image: prom/prometheus
+    container_name: prometheus
+    command:
+      - '--config.file=/etc/prometheus/prometheus.yml'
+    ports:
+      - '9090:9090'
+    volumes:
+      - prometheus-storage:/prometheus
+      - '$PWD/config/prometheus:/etc/prometheus'
+
+  webapp:
+    build:
+      context: ./fastapi
+      dockerfile: Dockerfile
+      args:
+        IMAGE_NAME: fastapi_metrics:latest
+    container_name: webapp
+    ports:
+      - '80:80'
+    volumes:
+      - '$PWD/fastapi:/code'
+
+volumes:
+  grafana-storage:
+  prometheus-storage:
