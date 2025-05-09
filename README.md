@@ -1,4 +1,4 @@
-## FastAPI, Prometheus, Grafana with docker-compose
+## FastAPI, Prometheus, Grafana with docker-compose. Snyk and Mend Bolt (whitesource bolt)
 
 
 #### What is this?
