@@ -1,0 +1,13 @@
+name: Stackhawk Workflow
+
+on: [push, pull_request, workflow_dispatch]
+
+jobs:
+  stackhawk-workflow:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - uses: stackhawk/hawkscan-action@v2.2.0
+      with:
+        apiKey: ${{ secrets.HAWK_API_KEY }}
+        configurationFiles: stackhawk/stackhawk-juiceshop.yml
