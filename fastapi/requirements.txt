@@ -1,3 +1,6 @@
 fastapi[standard]==0.115.12
 pydantic==2.11.4
 prometheus-fastapi-instrumentator==1.1.1
+anyio>=4.4.0 # not directly required, pinned by Snyk to avoid a vulnerability
+starlette>=0.40.0 # not directly required, pinned by Snyk to avoid a vulnerability
+zipp>=3.19.1 # not directly required, pinned by Snyk to avoid a vulnerability
