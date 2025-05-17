@@ -82,10 +82,14 @@ $ curl http://localhost:3000/api/health
 * You should now see a data graph
 
 
+#### Shut down containers
+```bash
+$ docker compose down
+```
+
 #### Cleaning up: how to remove all containers and volumes
 
 ```bash
-
 $ chmod +x docker_remove_all.sh
 $ ./docker_remove_all.sh
 ```
